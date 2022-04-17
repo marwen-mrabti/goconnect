@@ -1,4 +1,5 @@
 module.exports = {
   MONGO_URI:
-    'mongodb+srv://marwen:GoConnectDB@cluster0.zlevy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    'mongodb+srv://goconnect:goconnect@goconnectcluster1.pprzj.mongodb.net/GoConnectDB',
+  secretOrKey: 'secret',
 };
