@@ -1,1 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Poppins:ital@1&family=Roboto:wght@500&display=swap');
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  background-color: #2f3030;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+img {
+  width: 100%;
+}
+
+/*scrollbar*/
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(219, 170, 170);
+  border-radius: 0.5rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(185, 236, 236, 0.527);
+  border-radius: 0.5rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #dbab64f8;
+}

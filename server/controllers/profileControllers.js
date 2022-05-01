@@ -69,7 +69,7 @@ exports.CurrentProfile = (req, res) => {
   let errors = {};
 
   Profile.findOne({ user: req.user.id })
-    .populate('user', ['name', 'avatar'])
+    .populate('user', ['name', 'avatar', 'role'])
     .then((profile) => {
       if (!profile) {
         errors.noProfile = 'there is no profile for this user';
@@ -85,7 +85,7 @@ exports.GetAllProfiles = (req, res) => {
   let errors = {};
 
   Profile.find()
-    .populate('user', ['name', 'avatar'])
+    .populate('user', ['name', 'avatar', 'role'])
     .then((profiles) => {
       if (!profiles) {
         errors.noProfiles = 'there are no profiles';
@@ -101,7 +101,7 @@ exports.GetProfileByHandle = (req, res) => {
   let errors = {};
 
   Profile.findOne({ handle: req.params.handle })
-    .populate('user', ['name', 'avatar'])
+    .populate('user', ['_id', 'name', 'avatar'])
     .then((profile) => {
       if (!profile) {
         errors.noProfile = 'there is no profile for this user';
@@ -119,7 +119,7 @@ exports.GetProfileById = (req, res) => {
   let errors = {};
 
   Profile.findOne({ user: req.params.user_id })
-    .populate('user', ['name', 'avatar'])
+    .populate('user', ['_id','name', 'avatar'])
     .then((profile) => {
       if (!profile) {
         errors.noProfile = 'there is no profile for this user';
@@ -203,7 +203,7 @@ exports.DeleteExperience = (req, res) => {
     .catch((err) => res.status(400).json(err));
 };
 
-//delete experience from profile
+//delete education from profile
 exports.DeleteEducation = (req, res) => {
   Profile.findOne({ user: req.user.id })
     .then((profile) => {

@@ -6,9 +6,34 @@ const {
   userRegister,
   userLogin,
   CurrentUser,
+  AdminDeletePost,
+  AdminDeleteUser,
 } = require('../../controllers/userControllers');
 
 const usersRouter = express.Router();
+
+//roles
+const { ROLES, inRole } = require('../../security/Roles');
+
+//@route => req:delete => /api/users/admin/delete_user/:user_id
+//@desc => delete a user
+//access => private => admin level access
+usersRouter.delete(
+  '/admin/delete_user/:user_id/:profile_id',
+  passport.authenticate('jwt', { session: false }),
+  inRole(ROLES.ADMIN),
+  AdminDeleteUser
+);
+
+//@route => req:delete => /api/users/admin/delete_post/:post_id
+//@desc => delete post
+//access => private => admin level access
+usersRouter.delete(
+  '/admin/delete_post/:post_id',
+  passport.authenticate('jwt', { session: false }),
+  inRole(ROLES.ADMIN),
+  AdminDeletePost
+);
 
 //@route => req:post => /api/users/register
 //@desc => register a user

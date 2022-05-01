@@ -1,4 +1,7 @@
 const User = require('../models/User');
+const Profile = require('../models/Profile');
+const Post = require('../models/Post');
+
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -11,7 +14,6 @@ const validateLoginInput = require('../validation/login');
 //user register
 exports.userRegister = (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
-
   //check validation
   if (!isValid) {
     return res.status(400).json(errors);
@@ -25,15 +27,17 @@ exports.userRegister = (req, res) => {
       // grab the avatar from email account
       const avatar = gravatar.url(req.body.email, {
         s: 200, //size
-        r: 'pg', //rating
         d: 'mm', //default avatar
       });
 
+      //user role
+      req.body.role = 'USER';
       //create new user
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        role: req.body.role,
         avatar,
       });
 
@@ -75,7 +79,12 @@ exports.userLogin = (req, res) => {
       if (isMatch) {
         //user Matched
         //create jwt payload
-        const payload = { id: user._id, name: user.name, avatar: user.avatar };
+        const payload = {
+          id: user._id,
+          name: user.name,
+          avatar: user.avatar,
+          role: user.role,
+        };
         //sign token
         jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
           res.json({ success: true, token: 'Bearer ' + token });
@@ -94,5 +103,22 @@ exports.CurrentUser = (req, res) => {
     id: req.user._id,
     name: req.user.name,
     email: req.user.email,
+    role: req.user.role,
+  });
+};
+
+// admin access => delete user
+exports.AdminDeleteUser = (req, res) => {
+  Profile.findOneAndRemove({ _id: String(req.params.profile_id) }).then(() => {
+    User.findOneAndRemove({ _id: String(req.params.user_id) }).then(() => {
+      res.json({ success: true });
+    });
+  });
+};
+
+// admin access => delete post
+exports.AdminDeletePost = (req, res) => {
+  Post.findOneAndRemove({ _id: String(req.params.post_id) }).then(() => {
+    res.json({ success: true });
   });
 };

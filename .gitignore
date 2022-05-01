@@ -11,6 +11,7 @@ node_modules/
 
 # production
 /build
+/config/keys_dev.js
 
 # misc
 .vscode/

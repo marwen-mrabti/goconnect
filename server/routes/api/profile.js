@@ -5,8 +5,8 @@ const profileRouter = express.Router();
 
 //load callback functions
 const {
-  CurrentProfile,
   CreateProfile,
+  CurrentProfile,
   GetProfileByHandle,
   GetProfileById,
   CreateExperience,
@@ -14,6 +14,7 @@ const {
   DeleteExperience,
   DeleteEducation,
   DeleteProfile,
+  GetAllProfiles,
 } = require('../../controllers/profileControllers');
 
 //@route => req:post => /api/profile
@@ -29,7 +30,7 @@ profileRouter.get('/', passport.authenticate('jwt', { session: false }), Current
 //@route => req:get => /api/profile/all
 //@desc => get all profiles
 //access => public
-profileRouter.get('/all');
+profileRouter.get('/all', GetAllProfiles);
 
 //@route => req:get => /api/profile/handle/:handle
 //@desc => get user profile by handle

@@ -1,5 +1,5 @@
-module.exports = {
-  MONGO_URI:
-    'mongodb+srv://goconnect:goconnect@goconnectcluster1.pprzj.mongodb.net/GoConnectDB',
-  secretOrKey: 'secret',
-};
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./keys_prod');
+} else {
+  module.exports = require('./keys_dev');
+}
