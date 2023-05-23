@@ -12,6 +12,7 @@ function Profiles() {
   useEffect(() => {
     dispatch(GetAllProfiles());
   }, [dispatch]);
+  
   const { profiles, loading } = useSelector((state) => state.profile);
 
   return (
