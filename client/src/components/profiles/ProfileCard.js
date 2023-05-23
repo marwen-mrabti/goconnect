@@ -8,25 +8,25 @@ function ProfileCard({ profile }) {
       <div className="row">
         <div className="col-2">
           <img
-            src={profile.user.avatar}
-            alt={profile.handle}
+            src={profile?.user?.avatar}
+            alt={profile?.handle}
             className="rounded-circle"
           />
         </div>
         <div className="col-lg-6 col-md-4 col-8">
-          <h3>{profile.user.name} </h3>
+          <h3>{profile?.user?.name} </h3>
           <p className="text-black">
-            {profile.status}{' '}
-            {isEmpty(profile.company) ? null : <span> at {profile.company}</span>}
+            {profile?.status}{' '}
+            {isEmpty(profile?.company) ? null : <span> at {profile?.company}</span>}
           </p>
-          <Link to={`/profile/${profile.handle}`} className="btn btn-info">
+          <Link to={`/profile/${profile?.handle}`} className="btn btn-info">
             view profile
           </Link>
         </div>
         <div className="col-md-4  d-md-block">
           <h4>skill set</h4>
           <ul className="list-group">
-            {profile.skills.slice(0, 4).map((skill, index) => (
+            {profile?.skills?.slice(0, 4)?.map((skill, index) => (
               <li key={index} className="list-group-item">
                 <i className="fa fa-check pr-2 text-primary" />
                 <span className='p-2'>{skill}</span>
