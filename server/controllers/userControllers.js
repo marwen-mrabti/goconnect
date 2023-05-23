@@ -8,7 +8,6 @@ const jwt = require('jsonwebtoken');
 
 
 
-let secretOrKey = process.env.SECRET_OR_KEY;
 
 //load input validation
 const validateRegisterInput = require('../validation/register');
@@ -89,7 +88,7 @@ exports.userLogin = (req, res) => {
           role: user.role,
         };
         //sign token
-        jwt.sign(payload, secretOrKey, { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, "secret", { expiresIn: 3600 }, (err, token) => {
           res.json({ success: true, token: 'Bearer ' + token });
         });
       } else {

@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const User = mongoose.model('users');
 
-let secretOrKey = process.env.SECRET_OR_KEY;
+
 
 const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-opts.secretOrKey = secretOrKey;
+opts.secretOrKey = "secret"
 
 module.exports = (passport) => {
   passport.use(
