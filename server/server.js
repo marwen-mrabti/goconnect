@@ -27,10 +27,10 @@ app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
-
+const MONGO_URI=process.env.MONGO_URI
  
 mongoose
-  .connect("mongodb+srv://goconnect:goconnect@goconnectcluster1.pprzj.mongodb.net/GoConnectDB")
+  .connect(MONGO_URI)
   .then(() => console.log('db connected'))
   .catch((err) => console.log(`couldn't connect to db => ${err.message}`));
 
