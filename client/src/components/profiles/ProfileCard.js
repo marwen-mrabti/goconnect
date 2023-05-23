@@ -7,7 +7,7 @@ function ProfileCard({ profile }) {
     <div className="card card-body bg-light mb-3">
       <div className="row">
         <div className="col-2">
-          <img
+         <img
             src={profile?.user?.avatar}
             alt={profile?.handle}
             className="rounded-circle"

@@ -28,7 +28,7 @@ function Profiles() {
               <h3>no profiles</h3>
             ) : (
               profiles.map((profile) => (
-                <ProfileCard key={profile.handle} profile={profile} />
+               !profile.handle ?null: <ProfileCard key={profile.handle} profile={profile} />
               ))
             )}
           </div>
