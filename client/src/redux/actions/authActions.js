@@ -6,7 +6,7 @@ import jwt_decode from 'jwt-decode';
 //authAction => register user
 export const userRegister = (userData, navigate) => async (dispatch) => {
   try {
-    await axios.post('/api/users/register', userData);
+    await axios.post('https://goconnect-v02.onrender.com/api/users/register', userData);
     message.success('you are registered');
     dispatch({ type: 'CLEAR_ERRORS', payload: {} });
     setTimeout(() => {
@@ -25,7 +25,7 @@ export const userRegister = (userData, navigate) => async (dispatch) => {
 export const userLogin = (userData, navigate) => async (dispatch) => {
   try {
     //post user data to the api
-    const res = await axios.post('/api/users/login', userData);
+    const res = await axios.post('https://goconnect-v02.onrender.com/api/users/login', userData);
     const { token } = res.data;
     //save the token to local storage
     localStorage.setItem('jwtToken', token);
@@ -77,7 +77,7 @@ export const userLogout = (navigate) => async (dispatch) => {
 export const DeleteUser = (user_id, profile_id) => async (dispatch) => {
   try {
     if (window.confirm('are you sure? this can not be undone!!')) {
-      await axios.delete(`/api/users/admin/delete_user/${user_id}/${profile_id}`);
+      await axios.delete(`https://goconnect-v02.onrender.com/api/users/admin/delete_user/${user_id}/${profile_id}`);
       message.success('user has been deleted successfully');
     }
   } catch (error) {
@@ -93,7 +93,7 @@ export const DeleteUser = (user_id, profile_id) => async (dispatch) => {
 export const AdminDeletePost = (post_id) => async (dispatch) => {
   try {
     if (window.confirm('are you sure? this can not be undone!!')) {
-      await axios.delete(`/api/users/admin/delete_post/${post_id}`);
+      await axios.delete(`https://goconnect-v02.onrender.com/api/users/admin/delete_post/${post_id}`);
       message.success('post has been deleted successfully');
     }
   } catch (error) {
