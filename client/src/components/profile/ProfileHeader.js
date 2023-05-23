@@ -10,71 +10,71 @@ function ProfileHeader({ userProfile }) {
             <div className="col-4 col-md-3 m-auto">
               <img
                 className="rounded-circle"
-                src={userProfile.user.avatar}
-                alt={userProfile.user.name}
+                src={userProfile?.user?.avatar}
+                alt={userProfile?.user?.name}
               />
             </div>
           </div>
           <div className="text-center">
-            <h1 className="display-4 text-center"> {userProfile.user.name} </h1>
+            <h1 className="display-4 text-center"> {userProfile?.user?.name} </h1>
             <p className="lead text-center">
-              {userProfile.status}
-              {isEmpty(userProfile.company) ? null : (
-                <span> at {userProfile.company}</span>
+              {userProfile?.status}
+              {isEmpty(userProfile?.company) ? null : (
+                <span> at {userProfile?.company}</span>
               )}
             </p>
 
-            {isEmpty(userProfile.location) ? null : <p> at {userProfile.location}</p>}
+            {isEmpty(userProfile?.location) ? null : <p> at {userProfile?.location}</p>}
 
             <p>
-              {isEmpty(userProfile.website) ? null : (
-                <a className="text-white p-2" href={userProfile.website} target="blank">
+              {isEmpty(userProfile?.website) ? null : (
+                <a className="text-white p-2" href={userProfile?.website} target="blank">
                   <i className="fas fa-globe fa-2x"></i>
                 </a>
               )}
-              {isEmpty(userProfile.githubUsername) ? null : (
+              {isEmpty(userProfile?.githubUsername) ? null : (
                 <a
                   className="text-white p-2"
-                  href={`https://github.com/${userProfile.githubUsername}`}
+                  href={`https://github.com/${userProfile?.githubUsername}`}
                   target="blank"
                 >
                   <i className="fab fa-github fa-2x"></i>
                 </a>
               )}
-              {isEmpty(userProfile.social && userProfile.social.twitter) ? null : (
+              {isEmpty(userProfile?.social && userProfile?.social?.twitter) ? null : (
                 <a
                   className="text-white p-2"
-                  href={userProfile.social.twitter}
+                  href={userProfile?.social?.twitter}
                   target="blank"
                 >
                   <i className="fab fa-twitter fa-2x"></i>
                 </a>
               )}
 
-              {isEmpty(userProfile.social && userProfile.social.facebook) ? null : (
+              {isEmpty(userProfile?.social && userProfile?.social?.facebook) ? null : (
                 <a
                   className="text-white p-2"
-                  href={userProfile.social.facebook}
+                  href={userProfile?.social?.facebook}
                   target="blank"
                 >
                   <i className="fab fa-facebook fa-2x"></i>
                 </a>
               )}
 
-              {isEmpty(userProfile.social && userProfile.social.linkedin) ? null : (
+              {isEmpty(userProfile?.social && userProfile?.social?.linkedin) ? null : (
                 <a
                   className="text-white p-2"
-                  href={userProfile.social.linkedin}
+                  href={userProfile?.social?.linkedin}
                   target="blank"
                 >
                   <i className="fab fa-linkedin fa-2x"></i>
                 </a>
               )}
 
-              {isEmpty(userProfile.social && userProfile.social.youtube) ? null : (
+              {isEmpty(userProfile?.social && userProfile?.social?.youtube) ? null : (
                 <a
                   className="text-white p-2"
-                  href={userProfile.social.youtube}
+                  href={userProfile?.social?.youtube}
                   target="blank"
                 >
                   <i className="fab fa-youtube fa-2x"></i>

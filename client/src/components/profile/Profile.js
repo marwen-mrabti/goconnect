@@ -46,10 +46,10 @@ function Profile() {
                   </div>
                   <ProfileHeader userProfile={userProfile} />
                   <ProfileAbout userProfile={userProfile} />
-                  <ProfileCreds
-                    experience={userProfile.experience}
-                    education={userProfile.education}
-                  />
+               {   <ProfileCreds
+                    experience={userProfile?.experience}
+                    education={userProfile?.education}
+                  />}
                 </div>
               )
             )}
