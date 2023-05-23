@@ -5,7 +5,10 @@ const Post = require('../models/Post');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const keys = require('../config/keys');
+
+
+
+let secretOrKey = process.env.SECRET_OR_KEY;
 
 //load input validation
 const validateRegisterInput = require('../validation/register');
@@ -86,7 +89,7 @@ exports.userLogin = (req, res) => {
           role: user.role,
         };
         //sign token
-        jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
+        jwt.sign(payload, secretOrKey, { expiresIn: 3600 }, (err, token) => {
           res.json({ success: true, token: 'Bearer ' + token });
         });
       } else {

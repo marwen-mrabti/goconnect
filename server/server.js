@@ -25,9 +25,10 @@ app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 
 //DB config
-const db = require('./config/keys').MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI
+ 
 mongoose
-  .connect(db)
+  .connect(MONGO_URI)
   .then(() => console.log('db connected'))
   .catch((err) => console.log(`couldn't connect to db => ${err.message}`));
 
